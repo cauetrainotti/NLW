@@ -43,4 +43,13 @@
 
 ## Operadores
     Operadores de atribuição de valor
-        =
+        Operador usado: =
+    Operador de concatenação
+        Operador usado: +, é a junção de duas ou mais strings
+
+## Estrutura de dados
+    Arrays
+        Uma lista que pode conter qualquer tipo de dado
+    Objetos
+        Uma variável com propriedade e valor
+   
