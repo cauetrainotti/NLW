@@ -55,4 +55,7 @@
 
 ## Estrutura de repetição
     While
-        
+        Pode ser parado por um "return"
+
+## Condicionais
+    Switch
