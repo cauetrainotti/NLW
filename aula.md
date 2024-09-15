@@ -46,6 +46,8 @@
         Operador usado: =
     Operador de concatenação
         Operador usado: +, é a junção de duas ou mais strings
+    Operadores de comparação
+        Operador usado: ==, !=, >, <. 
 
 ## Estrutura de dados
     Arrays
@@ -59,3 +61,11 @@
 
 ## Condicionais
     Switch
+    If/Else
+
+## Módulos em Node.js
+    Importação de módulos (require, commonJS)
+    Biblioteca "Inquirer" para criar prompts interativos
+
+## Programação assíncrona e Promises:
+    Uso de funções assíncronas (async/await)
