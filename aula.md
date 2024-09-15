@@ -52,4 +52,7 @@
         Uma lista que pode conter qualquer tipo de dado
     Objetos
         Uma variável com propriedade e valor
-   
+
+## Estrutura de repetição
+    While
+        
