@@ -48,12 +48,16 @@
         Operador usado: +, é a junção de duas ou mais strings
     Operadores de comparação
         Operador usado: ==, !=, >, <. 
+    Spread operator
+        Operador usado: ...
 
 ## Estrutura de dados
     Arrays
-        Uma lista que pode conter qualquer tipo de dado
+        Uma lista que pode conter qualquer tipo de dado; Toda função dentro de um objeto; Um array é um objeto
+        Metodos de Array: Push, [(Find, forEach, Filter): HOF (Higher Order Functions), toda HOF irá sempre receber uma função]
     Objetos
         Uma variável com propriedade e valor
+        No JavaScript, tudo pode ser um objeto
 
 ## Estrutura de repetição
     While
