@@ -54,7 +54,7 @@
 ## Estrutura de dados
     Arrays
         Uma lista que pode conter qualquer tipo de dado; Toda função dentro de um objeto; Um array é um objeto
-        Metodos de Array: Push, [(Find, forEach, Filter): HOF (Higher Order Functions), toda HOF irá sempre receber uma função]
+        Metodos de Array: Push, [(Find, forEach, Filter, Map): HOF (Higher Order Functions), toda HOF irá sempre receber uma função] Map irá devolver um array, mas modificado
     Objetos
         Uma variável com propriedade e valor
         No JavaScript, tudo pode ser um objeto
@@ -73,3 +73,7 @@
 
 ## Programação assíncrona e Promises:
     Uso de funções assíncronas (async/await)
+
+Ao usar o " ` ", pode-se colocar objetos em mensagens, por exemplo:
+message: `Metas realizadas: ${realizadas.length} / ${metas.length} (${porcRealizadas.toFixed(2)}%)` => Certo
+message: "Metas realizadas: ${realizadas.length} / ${metas.length} (${porcRealizadas.toFixed(2)}%)" => Dá erro!

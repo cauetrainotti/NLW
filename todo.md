@@ -6,3 +6,5 @@
 Desmarcar metas
 Remover metas
 Sistema de mensagem
+
+ARRUMAR PORCENTAGENS
