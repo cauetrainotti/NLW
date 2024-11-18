@@ -1,18 +1,18 @@
 [
-    {
-      "value": "Fazer exercícios por algumas horas",
-      "checked": false
-    },
-    {
-      "value": "Beber água",
-      "checked": false
-    },
-    {
-      "value": "Estudar 1 hora",
-      "checked": false
-    },
-    {
-      "value": "Comer de forma saudável",
-      "checked": false
-    }
-  ]
+  {
+    "value": "Fazer exercícios por algumas horas",
+    "checked": false
+  },
+  {
+    "value": "Beber água",
+    "checked": false
+  },
+  {
+    "value": "Estudar 1 hora",
+    "checked": false
+  },
+  {
+    "value": "Comer de forma saudável",
+    "checked": false
+  }
+]
