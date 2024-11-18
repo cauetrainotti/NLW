@@ -1,23 +1,43 @@
 const{select, input, checkbox} = require('@inquirer/prompts')
+const fs = require("fs").promises
 
-let = meta = {
-    value: "Tomar água todo dia",
-    checked: false,
+let mensagem = "Bem-vindo ao app de metas!";
+
+let metas
+
+const carregarMetas = async () => {
+    try {
+        const dados = await fs.readFile("metas.json", "utf-8")
+        metas = JSON.parse(dados)
+    }
+    catch(erro) {
+        metas = []
+    }
 }
-let metas = [meta]
+
+const salvarMetas = async () => {
+    await fs.writeFile("metas.json", JSON.stringify(metas, null, 2))
+}
+
 const cadastrarMeta = async () => {
     const meta = await input({ message: "Digite a meta:"})
     if(meta.length == 0) {
-        console.log("A meta não pode ficar vazia")
+        mensagem = "A meta não pode ficar vazia"
         return
     }
     
     metas.push(
         {value: meta, checked: false})
 
+    mensagem = "Meta cadastrada com sucesso!"
+
 }
 
 const listarMeta = async () => {
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
     const respostas = await checkbox({
         message: "Use as setas para mudar de meta, o espaço para marcar/desmarcar e o Enter para finalizar a etapa.",
         choices: [...metas],
@@ -29,7 +49,7 @@ const listarMeta = async () => {
     })
 
     if(respostas.length == 0){
-        console.log("Nenhuma meta foi selecionada.")
+        mensagem = "Nenhuma meta foi selecionada"
         return
     }
  
@@ -41,17 +61,22 @@ const listarMeta = async () => {
         meta.checked = true 
     })
 
-    console.log("Metas concluídas")
+    mensagem = "Meta(s) concluída(s)"
 
 }
 
 const metasRealizadas = async () => {
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
     const realizadas = metas.filter((meta) => {
         return meta.checked
     })
 
     if(realizadas.length == 0) {
-        console.log("Não existem metas realizadas :(")
+        mensagem = "Não existem metas realizadas :("
         return
     }
 
@@ -64,12 +89,17 @@ const metasRealizadas = async () => {
 }
 
 const metasAbertas = async () => {
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+    
     const abertas = metas.filter((meta) => {
         return (meta.checked == false)
     })
 
     if(abertas.length == 0) {
-        console.log("Não existem metas abertas!")
+        mensagem = "Não existem metas abertas! :)"
         return
     }
 
@@ -80,6 +110,11 @@ const metasAbertas = async () => {
 }
 
 const deletarMeta = async () => {
+    if(metas.length == 0) {
+        mensagem = "Não existem metas!"
+        return
+    }
+
     const metasDesmarcadas = metas.map((meta) => {
         return {value: meta.value, checked: false}
     })
@@ -91,7 +126,7 @@ const deletarMeta = async () => {
     })
 
     if(aDeletar.length == 0){
-        console.log("Nenhum item foi deletado")
+        mensagem = "Nenhum item foi deletado"
         return
     }
 
@@ -100,11 +135,28 @@ const deletarMeta = async () => {
             return meta.value != item
         })
     })
+
+    
+    mensagem = "Meta deletada com sucesso"
 }
 
+const mostrarMensagem = () => {
+    console.clear(); 
+
+    if(mensagem != "") {
+        console.log(mensagem)
+        console.log("")
+        mensagem = " "
+    }
+}
 const start = async () => {
 
+    await carregarMetas()
+
     while(true){
+        mostrarMensagem()
+        await salvarMetas()
+
         const opcao = await select({
             message: "Menu>",
             choices: [
@@ -144,7 +196,6 @@ const start = async () => {
         switch(opcao){
             case "cadastrar":
                 await cadastrarMeta()
-                console.log(metas)
                 break
             case "listar":
                 await listarMeta()
@@ -157,6 +208,7 @@ const start = async () => {
                 break
             case "deletar":
                 await deletarMeta()
+                
                 break
             case "sair":
                 console.log("Até a próxima!")
